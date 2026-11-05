@@ -30,7 +30,7 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
   '/products/r6/lite/': {
     title: 'R6 Lite Hacks | Player ESP, Radar & Loot Timers',
     description:
-      'R6 Lite hacks for PC — player ESP, chest markers, loot timers and radar without aimbot. Stream-proof overlay and ranked presets on r6hacks.org.',
+      'R6 Lite hacks for PC — player ESP, gadget markers, roam timers and radar without aimbot. Stream-proof overlay and ranked presets on r6hacks.org.',
   },
   '/products/r6/pro/': {
     title: 'R6 Pro Hacks | Aimbot, Smooth Aim & Wall ESP',
@@ -65,14 +65,14 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
   '/blog/': {
     title: 'Rainbow Six Siege Hack Blogs | Aimbot, wall ESP & BattlEye',
     description:
-      'Read Rainbow Six Siege hack guides on aimbot setup, wall ESP, Lite vs Pro, training grounds practice and BattlEye patch-day checks.',
+      'Blogs: Read Rainbow Six Siege hack guides on aimbot setup, wall ESP, Lite vs Pro, training grounds practice and BattlEye patch-day checks.',
     h1: 'Latest Rainbow Six Siege hack guide blogs — aimbot, wall ESP & BattlEye',
   },
   '/forum/': {
-    title: 'Rainbow Six Siege Forum — Loader & Tier Help',
+    title: 'Forum – Most discussed 20 discussions All topics General',
     description:
       'Forum for loader setup, aimbot configs, BattlEye status and product questions. Answers from r6hacks.org guides and community discussions.',
-    h1: 'Forum — most discussed topics, general discussions and loader setup help',
+    h1: 'Forum — Rainbow Six Siege tier help, loader setup and discussions',
   },
   '/faq/': {
     title: 'FAQ – R6 tiers, bans, setup and BattlEye loader help',
@@ -92,9 +92,10 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
     h1: 'Privacy Policy — r6hacks.org analytics, cookies, checkout and contact data',
   },
   '/about/': {
-    title: 'About R6 Hacks — Tiers, Guides & Support',
+    title: 'Aimbot Esp – We publish tier comparisons, setup guides and support',
     description:
       'About aimbot, ESP and PC Rainbow Six Siege tools — tier comparisons, loader setup and support at r6hacks.org for Ubisoft Connect players.',
+    h1: 'About aimbot ESP — R6 hacks tiers, setup guides and support',
   },
   '/support/': {
     title: 'Support – loader, HWID and checkout help on r6hacks',
@@ -122,9 +123,13 @@ export function getPageSeoEntry(pathname: string): PageSeoEntry | undefined {
 /** Blog post `<title>` / meta description overrides (exact audit phrases). */
 export const BLOG_POST_SEO: Record<string, Partial<PageSeoEntry>> = {
   'r6-radar': {
-    title: 'R6 Radar Guide — FOV & Camera Zoom for Siege',
+    title: 'Distance Caps – Mini-radar and extended camera zoom Siege',
     description:
-      'Mini-radar and extended camera zoom for Rainbow Six Siege — safe FOV caps and awareness presets on PC at r6hacks.org.',
+      'Distance Caps: Mini-radar and extended camera zoom for Rainbow Six Siege — safe FOV caps and awareness presets on PC at r6hacks.org.',
+  },
+  'r6-practice-lobby': {
+    description:
+      'Shooting Range and bot lobbies to practice aimbot smoothness, ESP ranges and loadout presets before ranked matchmaking on PC at r6hacks.org.',
   },
   'r6-stream-proof': {
     title: 'Stream Proof – Hide wall ESP and script overlays from OBS',
@@ -151,7 +156,7 @@ export const BLOG_POST_PAGE_H1: Record<string, string> = {
     'Stream-Proof Overlay Setup — hide wall ESP and script overlays from OBS (R6 hacks)',
   'r6-practice-lobby': 'Shooting Range Practice: Aim Drills Before Ranked (R6 hacks)',
   'r6-radar':
-    'Rainbow Six Siege Radar hack Guide — FOV awareness and safe distance caps',
+    'Rainbow Six Siege radar — distance caps, camera zoom and FOV awareness',
 };
 
 export function getBlogPostSeo(slug: string, fallback: PageSeoEntry): PageSeoEntry {

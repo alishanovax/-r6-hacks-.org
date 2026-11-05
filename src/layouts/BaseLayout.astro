@@ -6,6 +6,7 @@ import {
   TWITTER_CREATOR,
   TWITTER_SITE,
   canonicalUrl,
+  SITE_ORIGIN,
   DEFAULT_OG_IMAGE,
   DEFAULT_OG_IMAGE_HEIGHT,
   DEFAULT_OG_IMAGE_WIDTH,
@@ -42,7 +43,7 @@ const {
   jsonLd,
 } = Astro.props;
 
-const canonical = canonicalUrl(Astro.url.pathname, Astro.url.origin);
+const canonical = canonicalUrl(Astro.url.pathname, SITE_ORIGIN);
 const faviconQuery = `?v=${FAVICON_VERSION}`;
 const ogImageUrl = absoluteAssetUrl(ogImage);
 const robotsContent = noindex
@@ -151,8 +152,7 @@ const robotsContent = noindex
     <main id="main-content">
       <slot />
       {
-        Astro.url.pathname !== '/' &&
-          Astro.url.pathname.replace(/\/$/, '') !== '/blog' && (
+        Astro.url.pathname !== '/' && (
           <div class="mx-auto max-w-6xl px-5 pb-8">
             <SocialShare title={title} class="border-t border-border pt-6" />
           </div>

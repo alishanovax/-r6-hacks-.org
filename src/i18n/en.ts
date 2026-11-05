@@ -503,7 +503,7 @@ export const en: Translations = {
       { num: '03', label: 'Radar', title: 'Loot and rotates on lock', desc: 'Enemy dots, loot timers and mini-radar on a compact overlay.' },
       { num: '04', label: 'Weapons', title: 'Per-weapon aimbot profiles', desc: 'Save AR, SMG, shotgun and sniper presets and swap with hotkeys.' },
       { num: '05', label: 'Loot', title: 'Chest ESP & loot assist', desc: 'Chest highlights, rare drops and Elite loot-assist pathing.' },
-      { num: '06', label: 'Profiles', title: 'Configs for every mode', desc: 'Multiplayer, Deathmatch, Ranked and Shooting Range presets with cloud backup.' },
+      { num: '06', label: 'Profiles', title: 'Configs for every mode', desc: 'Quick Match, Unranked, Ranked and Shooting Range presets with cloud backup.' },
     ],
   },
   workflow: {
@@ -656,7 +656,7 @@ export const en: Translations = {
         {
           heading: 'What we sell',
           paragraphs: [
-            'Lite, Pro and Elite R6 hacks, plus HWID Spoofer, Operator loadout tools and UGC recovery. Coverage spans Team Deathmatch, Deathmatch and ranked modes when the status banner shows online.',
+            'Lite, Pro and Elite R6 hacks, plus HWID Spoofer, Operator loadout tools and UGC recovery. Coverage spans Quick Match, Unranked and ranked when the status banner shows online.',
             'The blog covers configs, patch checks and BattlEye updates. Pages are updated when Rainbow Six Siege or the loader changes—check the homepage status banner and Discord #status before you play.',
           ],
         },

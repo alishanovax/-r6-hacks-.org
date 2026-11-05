@@ -9,9 +9,16 @@ function trailingSlashPath(pathname) {
   return pathname.endsWith('/') ? pathname : `${pathname}/`;
 }
 
-/** Force production canonical in HTML even on Workers preview hosts. */
-function rewriteHtmlSeoUrls(html, pathname) {
-  const canonical = `${CANONICAL_ORIGIN}${trailingSlashPath(pathname)}`;
+/** Production uses r6hacks.org; Workers preview uses self-origin so audits match the crawl host. */
+function seoOrigin(url) {
+  const host = url.hostname.toLowerCase();
+  if (host === 'r6hacks.org' || host === 'www.r6hacks.org') return CANONICAL_ORIGIN;
+  if (host.endsWith('.workers.dev')) return url.origin;
+  return CANONICAL_ORIGIN;
+}
+
+function rewriteHtmlSeoUrls(html, url) {
+  const canonical = `${seoOrigin(url)}${trailingSlashPath(url.pathname)}`;
   return html
     .replace(/<link rel="canonical" href="[^"]*"/g, `<link rel="canonical" href="${canonical}"`)
     .replace(
@@ -66,14 +73,17 @@ export default {
 
     const response = await fetchAsset(request, env);
 
-    if (response.status === 200 && isSitemapOrFeedPath(url.pathname)) {
+    if (isSitemapOrFeedPath(url.pathname)) {
       const headers = new Headers(response.headers);
-      headers.set(
-        'content-type',
-        url.pathname.endsWith('.xml') ? 'application/xml; charset=utf-8' : 'application/rss+xml; charset=utf-8',
-      );
-      headers.delete('content-length');
-      return new Response(response.body, { status: response.status, headers });
+      if (response.status === 200) {
+        headers.set(
+          'content-type',
+          url.pathname.endsWith('.xml') ? 'application/xml; charset=utf-8' : 'application/rss+xml; charset=utf-8',
+        );
+        headers.delete('content-length');
+        return new Response(response.body, { status: response.status, headers });
+      }
+      return response;
     }
 
     const contentType = response.headers.get('content-type') ?? '';
@@ -82,7 +92,7 @@ export default {
     }
 
     const html = await response.text();
-    const body = rewriteHtmlSeoUrls(html, url.pathname);
+    const body = rewriteHtmlSeoUrls(html, url);
     const headers = new Headers(response.headers);
     headers.delete('content-length');
     return new Response(body, { status: response.status, headers });

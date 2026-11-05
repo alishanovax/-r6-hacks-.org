@@ -112,7 +112,7 @@ const defaultAcquisitionSteps: AcquisitionStep[] = [
   {
     num: '04',
     title: 'Follow guided setup',
-    desc: 'Use only the operator portal, patch loader, and setup guide. Test in a lobby, load presets, then queue ranked or Deathmatch.',
+    desc: 'Use only the operator portal, patch loader, and setup guide. Test in a lobby, load presets, then queue ranked or Quick Match.',
   },
 ];
 
@@ -211,7 +211,7 @@ const tierAbout: Record<string, ProductPage['about']> = {
   lite: [
     {
       type: 'p',
-      text: 'R6 Lite is built for players who want map awareness first. In ranked, knowing enemy positions, chest locations and loot timings wins more fights than raw mechanics—Lite gives you that edge without aimbot automation.',
+      text: 'R6 Lite is built for players who want map awareness first. In ranked, knowing enemy positions, gadget placements and rotate timings wins more fights than raw mechanics—Lite gives you that edge without aimbot automation.',
     },
     { type: 'h2', text: 'Ranked-safe by design' },
     {
@@ -248,7 +248,7 @@ const tierBodies: Record<string, ProductPage['body']> = {
     { type: 'h2', text: 'Included modules' },
     {
       type: 'p',
-      text: 'Player ESP with distance and name tags, chest and reboot-van locator, loot spawn timers, radar hack, and stream-safe overlay hiding. Config presets for Team Deathmatch and Deathmatch ship in the portal—load before your first queue.',
+      text: 'Player ESP with distance and name tags, gadget and objective markers, roam timers, radar hack, and stream-safe overlay hiding. Config presets for Quick Match and Unranked ship in the portal—load before your first queue.',
     },
     { type: 'h2', text: 'Upgrade path' },
     {
@@ -332,16 +332,16 @@ const productContent: Record<
     systemRequirements: r6SystemRequirements,
     fullFeatures: [
       'Player ESP & player boxes',
-      'Chest & loot locator',
+      'Gadget & objective locator',
       'POI awareness',
       'Health & shield tracking',
       'Mini-radar overlay',
       'Streamproof overlay mode',
       'Distance readouts',
       'Team color filter',
-      'Loot spawn timers',
+      'Roam timers',
       'Radar hack',
-      'Deathmatch preset config',
+      'Quick Match preset config',
       'Ranked preset config',
       'Cloud config backup',
       'Patch auto-updater',
@@ -349,8 +349,8 @@ const productContent: Record<
     overview: {
       title: 'R6 Lite: ESP and radar',
       paragraphs: [
-        'Lite is for player ESP, chest markers, loot timers and radar. No aimbot. Set distance, colors and stream-proof in the portal before you queue.',
-        'Best if you want awareness in Team Deathmatch and Deathmatch without combat automation. Overlays are updated after Rainbow Six Siege patches.',
+        'Lite is for player ESP, gadget markers, roam timers and radar. No aimbot. Set distance, colors and stream-proof in the portal before you queue.',
+        'Best if you want awareness in Quick Match and Unranked without combat automation. Overlays are updated after Rainbow Six Siege patches.',
       ],
     },
   },
@@ -380,7 +380,7 @@ const productContent: Record<
       title: 'R6 Pro: aimbot plus ESP',
       paragraphs: [
         'Pro includes everything in Lite, plus Aimbot, Smooth Aim, Sticky Aim and hotkey macros. Aim settings live in one tab. Start with a portal preset, not max sliders.',
-        'Most people pick Pro for Team Deathmatch and Deathmatch. Bone priority and macros help in fights while defaults stay smooth.',
+        'Most people pick Pro for Quick Match and Unranked. Bone priority and macros help in firefights while defaults stay smooth.',
       ],
     },
   },
