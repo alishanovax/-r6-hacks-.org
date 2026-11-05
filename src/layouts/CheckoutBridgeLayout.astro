@@ -6,6 +6,7 @@ import {
   DEFAULT_OG_IMAGE,
   DEFAULT_OG_IMAGE_HEIGHT,
   DEFAULT_OG_IMAGE_WIDTH,
+  SITE_ORIGIN,
 } from '../config/seo';
 import { FAVICON_VERSION } from '../config/site';
 import SocialShare from '../components/SocialShare.astro';
@@ -21,7 +22,7 @@ interface Props {
 }
 
 const { title, description, logoAlt, ogImage, ogImageAlt, jsonLd } = Astro.props;
-const canonical = canonicalUrl(Astro.url.pathname, Astro.url.origin);
+const canonical = canonicalUrl(Astro.url.pathname, SITE_ORIGIN);
 const ogImageUrl = absoluteAssetUrl(ogImage ?? DEFAULT_OG_IMAGE);
 const shareImageAlt = ogImageAlt ?? title;
 
@@ -42,7 +43,8 @@ const navLinks = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="googlebot" content="noindex, nofollow" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />

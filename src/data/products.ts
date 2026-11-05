@@ -168,7 +168,7 @@ const galleryRaw = {
     src: SITE_CHEAT_IMAGES[4]!.src,
     alt: SITE_CHEAT_IMAGES[4]!.alt,
     caption: 'Courtyard battle',
-    captionDesc: 'Sci-fi courtyard firefight with Vault Hunter action.',
+    captionDesc: 'Rainbow Six Siege courtyard firefight with operator gadgets.',
   },
 };
 

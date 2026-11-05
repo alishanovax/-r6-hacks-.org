@@ -22,7 +22,7 @@ const relatedPosts = [
 ---
 
 <BaseLayout title={pageTitle(post.title)} description={cheatMetaDescription(post.excerpt)} jsonLd={[
-  discussionForumPostingSchema({ name: post.title, text: post.body.join('\n\n'), url: path, author: post.author, comments: post.commentsCount }),
+  discussionForumPostingSchema({ name: post.title, text: post.body.join('\n\n'), url: path }),
   breadcrumbSchema(breadcrumbs),
 ]}>
   <section class="forum-page py-8 md:py-12">

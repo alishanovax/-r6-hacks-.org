@@ -58,9 +58,9 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
       'Operator loadout tools / Loadout Pack — local outfit, wrap and weapon previews with your Rainbow Six Siege client; no in-game inventory purchase required.',
   },
   '/products/r6/utilities/': {
-    title: 'Utilities – and local Operator loadout tools / Pack',
+    title: 'R6 Utilities — HWID, UGC & Loadout Tools',
     description:
-      'Compare Rainbow Six Siege hack utilities: HWID spoofer after hardware bans, UGC for Ubisoft/BattlEye appeals, and local operator loadout tools.',
+      'Compare Rainbow Six Siege utilities on PC: HWID spoofer, UGC appeals, and local operator loadout tools at r6hacks.org.',
   },
   '/blog/': {
     title: 'Rainbow Six Siege Hack Blogs | Aimbot, wall ESP & BattlEye',
@@ -69,7 +69,7 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
     h1: 'Latest Rainbow Six Siege hack guide blogs — aimbot, wall ESP & BattlEye',
   },
   '/forum/': {
-    title: 'Forum – Most discussed 20 discussions All topics General',
+    title: 'Rainbow Six Siege Forum — Loader & Tier Help',
     description:
       'Forum for loader setup, aimbot configs, BattlEye status and product questions. Answers from r6hacks.org guides and community discussions.',
     h1: 'Forum — most discussed topics, general discussions and loader setup help',
@@ -81,7 +81,7 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
     h1: 'FAQ — R6 Hacks tiers, bans, BattlEye setup, loader help and checkout',
   },
   '/terms/': {
-    title: 'Terms – org — license use, delivery, refunds and account',
+    title: 'Terms of Service — R6 Hacks Shop & License',
     description:
       'Terms for buying R6 hacks on r6hacks.org — license use, delivery, refunds and account risk when you checkout R6 trainer products.',
   },
@@ -92,9 +92,9 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
     h1: 'Privacy Policy — r6hacks.org analytics, cookies, checkout and contact data',
   },
   '/about/': {
-    title: 'Aimbot Esp – We publish tier comparisons, setup guides and',
+    title: 'About R6 Hacks — Tiers, Guides & Support',
     description:
-      'About aimbot ESP and PC Rainbow Six Siege tools — tier comparisons, loader setup and support at r6hacks.org for Ubisoft Connect players.',
+      'About aimbot, ESP and PC Rainbow Six Siege tools — tier comparisons, loader setup and support at r6hacks.org for Ubisoft Connect players.',
   },
   '/support/': {
     title: 'Support – loader, HWID and checkout help on r6hacks',
@@ -122,34 +122,36 @@ export function getPageSeoEntry(pathname: string): PageSeoEntry | undefined {
 /** Blog post `<title>` / meta description overrides (exact audit phrases). */
 export const BLOG_POST_SEO: Record<string, Partial<PageSeoEntry>> = {
   'r6-radar': {
-    title: 'Guide – FOV awareness and safe distance caps for Team',
+    title: 'R6 Radar Guide — FOV & Camera Zoom for Siege',
     description:
-      'Radar Hack: R6 hacks guide: Mini-radar, FOV awareness and safe distance caps for Team Deathmatch and Deathmatch on r6hacks.org.',
+      'Mini-radar and extended camera zoom for Rainbow Six Siege — safe FOV caps and awareness presets on PC at r6hacks.org.',
   },
   'r6-stream-proof': {
     title: 'Stream Proof – Hide wall ESP and script overlays from OBS',
     description:
-      'Stream Proof: R6 hacks guide: Hide wall ESP and script overlays from OBS, Game Bar and capture cards—test workflow for content creators.',
+      'Hide wall ESP and script overlays from OBS, Game Bar and capture cards—stream-proof workflow for Rainbow Six Siege creators.',
   },
   'r6-aimbot-ranked': {
-    title: 'Ranked – net ships Bone Priority, Prediction, Smoothness',
+    title: 'Ranked Aimbot — Bone Priority & Prediction Setup',
+    description:
+      'Ranked aimbot configs for Rainbow Six Siege: bone priority, prediction, and smoothness presets on PC at r6hacks.org.',
   },
   'battleye-fix': {
-    title: 'Eac – What the error means “BattlEye was unable to',
+    title: 'BattlEye Error Fix — Verification & Loader Help',
     description:
-      'R6 hacks guide: Fix verification errors, file integrity checks and when to use Account Recovery after eac issues on r6hacks.org.',
+      'Fix BattlEye verification errors, reload the loader after patches, and when to use HWID or UGC recovery tools on r6hacks.org.',
   },
 };
 
 /** Optional on-page H1 overrides (blog posts). */
 export const BLOG_POST_PAGE_H1: Record<string, string> = {
   'battleye-fix':
-    'What the BattlEye error means — EAC unable to verify Rainbow Six Siege (R6 hacks)',
+    'What the BattlEye error means — unable to verify Rainbow Six Siege (R6 hacks)',
   'r6-stream-proof':
     'Stream-Proof Overlay Setup — hide wall ESP and script overlays from OBS (R6 hacks)',
   'r6-practice-lobby': 'Shooting Range Practice: Aim Drills Before Ranked (R6 hacks)',
   'r6-radar':
-    'Rainbow Six Siege Radar hack Guide — FOV awareness, safe distance caps for Team',
+    'Rainbow Six Siege Radar hack Guide — FOV awareness and safe distance caps',
 };
 
 export function getBlogPostSeo(slug: string, fallback: PageSeoEntry): PageSeoEntry {

@@ -10,9 +10,8 @@ export const CHECKOUT_URLS = {
 };
 
 /** Checkout paths → external product URLs (used by Node serve + Astro middleware). */
+/** /go/r6/ is the SSR checkout bridge (no 302). Other /go/* paths redirect out. */
 export const CHECKOUT_PATH_REDIRECTS = new Map([
-  ['/go/r6', CHECKOUT_URLS.r6],
-  ['/go/r6/', CHECKOUT_URLS.r6],
   ['/go/skin-changer', CHECKOUT_URLS.skinChanger],
   ['/go/skin-changer/', CHECKOUT_URLS.skinChanger],
   ['/go/hwid-spoofer', CHECKOUT_URLS.hwidSpoofer],

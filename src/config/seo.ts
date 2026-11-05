@@ -60,11 +60,9 @@ export function pageTitle(keyword: string, brand = t.site.name): string {
   return `${trimmed}${suffix}`;
 }
 
-/** Keep meta descriptions blunt about R6 hacks for SERP snippets. */
+/** Meta description helper — no automatic keyword prefix (avoids SERP stuffing). */
 export function cheatMetaDescription(text: string): string {
-  const trimmed = text.trim();
-  if (/mw4\s*hack/i.test(trimmed)) return trimmed;
-  return `R6 hacks guide: ${trimmed}`;
+  return text.trim();
 }
 
 export const DEFAULT_OG_IMAGE_WIDTH = 1200;

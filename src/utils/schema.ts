@@ -117,21 +117,13 @@ export function itemListSchema(items: { name: string; url: string }[]) {
   };
 }
 
-export function discussionForumPostingSchema(input: {
-  name: string;
-  text: string;
-  url: string;
-  author: string;
-  comments: number;
-}) {
+export function discussionForumPostingSchema(input: { name: string; text: string; url: string }) {
   return {
     '@context': 'https://schema.org',
     '@type': 'DiscussionForumPosting',
     headline: input.name,
     articleBody: input.text,
     url: canonicalUrl(input.url),
-    author: { '@type': 'Person', name: input.author },
-    commentCount: input.comments,
     isPartOf: { '@type': 'CollectionPage', name: 'R6 Hacks Forum', url: canonicalUrl('/forum/') },
   };
 }
@@ -148,7 +140,12 @@ export function productSchema(input: {
   offerUrl: string;
   image?: string;
   sku?: string;
+  /** Defaults to Zadeyo Monthly ($35) and Lifetime ($150) only. */
+  plans?: ReturnType<typeof getProductPlans>;
 }) {
+  const plans = input.plans ?? getProductPlans();
+  const checkout = offerUrl(input.offerUrl);
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -160,27 +157,18 @@ export function productSchema(input: {
       name: 'R6 Hacks',
     },
     ...(input.image ? { image: absoluteAssetUrl(input.image) } : {}),
-    offers: {
-      '@type': 'AggregateOffer',
-      url: offerUrl(input.offerUrl),
+    offers: plans.map((plan) => ({
+      '@type': 'Offer',
+      name: `${plan.label} — ${plan.duration}`,
+      price: plan.priceUsd.toFixed(2),
       priceCurrency: 'USD',
-      lowPrice: String(Math.min(...getProductPlans().map((plan) => plan.priceUsd))),
-      highPrice: String(Math.max(...getProductPlans().map((plan) => plan.priceUsd))),
-      offerCount: getProductPlans().length,
+      url: checkout,
       availability: 'https://schema.org/InStock',
       seller: {
         '@type': 'Organization',
         name: 'R6 Hacks',
       },
-      offers: getProductPlans().map((plan) => ({
-        '@type': 'Offer',
-        name: plan.label,
-        price: plan.priceUsd.toFixed(2),
-        priceCurrency: 'USD',
-        url: offerUrl(input.offerUrl),
-        availability: 'https://schema.org/InStock',
-      })),
-    },
+    })),
   };
 }
 

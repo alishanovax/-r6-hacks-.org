@@ -78,9 +78,9 @@ function normalizeUrl(loc) {
 
 /** @param {string | undefined} value */
 function formatLastmod(value) {
-  if (!value) return new Date().toISOString().slice(0, 10);
+  if (!value) return null;
   const d = new Date(value);
-  if (Number.isNaN(d.getTime())) return new Date().toISOString().slice(0, 10);
+  if (Number.isNaN(d.getTime())) return null;
   return d.toISOString().slice(0, 10);
 }
 
@@ -97,7 +97,9 @@ function bucketFor(loc) {
 function renderUrlset(urls) {
   const body = urls
     .map((u) => {
-      const lines = [`  <url>`, `    <loc>${u.loc}</loc>`, `    <lastmod>${formatLastmod(u.lastmod)}</lastmod>`];
+      const lastmod = formatLastmod(u.lastmod);
+      const lines = [`  <url>`, `    <loc>${u.loc}</loc>`];
+      if (lastmod) lines.push(`    <lastmod>${lastmod}</lastmod>`);
       if (u.changefreq) lines.push(`    <changefreq>${u.changefreq}</changefreq>`);
       if (u.priority) lines.push(`    <priority>${u.priority}</priority>`);
       lines.push(`  </url>`);
@@ -116,9 +118,14 @@ ${body}
 function renderIndex(children) {
   const body = children
     .map(
-      (c) => `  <sitemap>
+      (c) =>
+        c.lastmod
+          ? `  <sitemap>
     <loc>${SITE}/${c.name}</loc>
     <lastmod>${c.lastmod}</lastmod>
+  </sitemap>`
+          : `  <sitemap>
+    <loc>${SITE}/${c.name}</loc>
   </sitemap>`,
     )
     .join('\n');
@@ -161,7 +168,6 @@ for (const list of Object.values(byBucket)) {
   list.sort((a, b) => a.loc.localeCompare(b.loc));
 }
 
-const today = new Date().toISOString().slice(0, 10);
 const childFiles = [
   { key: 'pages', name: 'sitemap-pages.xml' },
   { key: 'products', name: 'sitemap-products.xml' },
@@ -173,10 +179,8 @@ const written = [];
 for (const child of childFiles) {
   const urls = byBucket[child.key];
   if (urls.length === 0) continue;
-  const lastmod = urls
-    .map((u) => formatLastmod(u.lastmod))
-    .sort()
-    .at(-1) ?? today;
+  const lastmods = urls.map((u) => formatLastmod(u.lastmod)).filter(Boolean).sort();
+  const lastmod = lastmods.at(-1) ?? null;
   fs.writeFileSync(path.join(dist, child.name), renderUrlset(urls), 'utf8');
   written.push({ name: child.name, lastmod, count: urls.length });
 }

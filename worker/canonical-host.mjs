@@ -1,11 +1,17 @@
-/** Rewrite canonical/hreflang/og:url to match the request host (preview vs production). */
+import {
+  CANONICAL_ORIGIN,
+  canonicalHostRedirectUrl,
+  resolve301Redirect,
+} from '../src/config/redirect-map.mjs';
+
 function trailingSlashPath(pathname) {
   if (!pathname || pathname === '/') return '/';
   return pathname.endsWith('/') ? pathname : `${pathname}/`;
 }
 
-function rewriteHtmlSeoUrls(html, origin, pathname) {
-  const canonical = `${origin}${trailingSlashPath(pathname)}`;
+/** Force production canonical in HTML even on Workers preview hosts. */
+function rewriteHtmlSeoUrls(html, pathname) {
+  const canonical = `${CANONICAL_ORIGIN}${trailingSlashPath(pathname)}`;
   return html
     .replace(/<link rel="canonical" href="[^"]*"/g, `<link rel="canonical" href="${canonical}"`)
     .replace(
@@ -16,13 +22,9 @@ function rewriteHtmlSeoUrls(html, origin, pathname) {
 }
 
 function isSitemapOrFeedPath(pathname) {
-  return (
-    pathname === '/rss.xml' ||
-    /^\/sitemap(-[\w-]+)?\.xml$/i.test(pathname)
-  );
+  return pathname === '/rss.xml' || /^\/sitemap(-[\w-]+)?\.xml$/i.test(pathname);
 }
 
-/** Astro output is `…/index.html`; html_handling=none does not map `/` or `/blog/`. */
 function hasFileExtension(pathname) {
   return /\.[a-z0-9]+$/i.test(pathname);
 }
@@ -51,6 +53,17 @@ async function fetchAsset(request, env) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    const hostTarget = canonicalHostRedirectUrl(url);
+    if (hostTarget) {
+      return Response.redirect(hostTarget, 301);
+    }
+
+    const pathTarget = resolve301Redirect(url.pathname);
+    if (pathTarget) {
+      return Response.redirect(`${CANONICAL_ORIGIN}${pathTarget}`, 301);
+    }
+
     const response = await fetchAsset(request, env);
 
     if (response.status === 200 && isSitemapOrFeedPath(url.pathname)) {
@@ -69,7 +82,7 @@ export default {
     }
 
     const html = await response.text();
-    const body = rewriteHtmlSeoUrls(html, url.origin, url.pathname);
+    const body = rewriteHtmlSeoUrls(html, url.pathname);
     const headers = new Headers(response.headers);
     headers.delete('content-length');
     return new Response(body, { status: response.status, headers });
