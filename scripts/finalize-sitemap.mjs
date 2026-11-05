@@ -4,6 +4,13 @@ import { resolveDistDir } from './dist-dir.mjs';
 
 const SITE = 'https://r6hacks.org';
 const dist = resolveDistDir();
+const publicDir = path.join(process.cwd(), 'public');
+
+function writeSeoAsset(relativeName, contents) {
+  fs.writeFileSync(path.join(dist, relativeName), contents, 'utf8');
+  fs.mkdirSync(publicDir, { recursive: true });
+  fs.writeFileSync(path.join(publicDir, relativeName), contents, 'utf8');
+}
 
 function loadUrlsetXml(dir) {
   const zero = path.join(dir, 'sitemap-0.xml');
@@ -181,21 +188,19 @@ for (const child of childFiles) {
   if (urls.length === 0) continue;
   const lastmods = urls.map((u) => formatLastmod(u.lastmod)).filter(Boolean).sort();
   const lastmod = lastmods.at(-1) ?? null;
-  fs.writeFileSync(path.join(dist, child.name), renderUrlset(urls), 'utf8');
+  writeSeoAsset(child.name, renderUrlset(urls));
   written.push({ name: child.name, lastmod, count: urls.length });
 }
 
 const indexXml = renderIndex(written);
 // GSC entry point: /sitemap.xml is the index (also mirrored as sitemap-index.xml).
-fs.writeFileSync(path.join(dist, 'sitemap.xml'), indexXml, 'utf8');
-fs.writeFileSync(path.join(dist, 'sitemap-index.xml'), indexXml, 'utf8');
+writeSeoAsset('sitemap.xml', indexXml);
+writeSeoAsset('sitemap-index.xml', indexXml);
 
 // Keep a combined urlset for IndexNow + tools that expect one file of <url> entries.
 const allUrls = childFiles.flatMap((c) => byBucket[c.key]);
-fs.writeFileSync(path.join(dist, 'sitemap-0.xml'), renderUrlset(allUrls), 'utf8');
-
-// Point IndexNow at the combined urlset (not the index).
-fs.writeFileSync(path.join(dist, 'sitemap-all.xml'), renderUrlset(allUrls), 'utf8');
+writeSeoAsset('sitemap-0.xml', renderUrlset(allUrls));
+writeSeoAsset('sitemap-all.xml', renderUrlset(allUrls));
 
 console.log(`Sitemap finalized: ${total} URLs`);
 for (const w of written) {
@@ -214,5 +219,5 @@ ${written.map((w) => `Sitemap: ${SITE}/${w.name}`).join('\n')}
 
 # RSS: ${SITE}/rss.xml
 `;
-fs.writeFileSync(path.join(dist, 'robots.txt'), robotsTxt, 'utf8');
-console.log('  robots.txt → synced with sitemap index');
+writeSeoAsset('robots.txt', robotsTxt);
+console.log('  robots.txt → synced with sitemap index (dist + public)');

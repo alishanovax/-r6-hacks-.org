@@ -1,5 +1,6 @@
 # Static Astro site — do not auto-add @astrojs/cloudflare (keeps output in dist/).
-name = "r6hacks-org"
+# Must match audit/preview host: https://r6-hacks--org.<account>.workers.dev
+name = "r6-hacks--org"
 main = "worker/canonical-host.mjs"
 compatibility_date = "2025-10-11"
 
