@@ -59,9 +59,9 @@ function guideDiscussion(input: {
 const additionalGuidePosts: ForumPost[] = [
   guideDiscussion({
     slug: 'r6-map-awareness', title: 'What does map awareness include in the guide?', upvotes: 73,
-    excerpt: 'A quick breakdown of player, chest, loot, and smoke information covered by the map awareness guide.',
+    excerpt: 'A quick breakdown of player, gadget, roam, and smoke information covered by the map awareness guide.',
     category: 'Guides & Builds', categoryTone: 'blue', sourceTitle: 'Rainbow Six Siege wall ESP setup guide', sourcePath: '/blog/r6-esp-setup/',
-    answer: 'The guide covers player ESP, chest and reboot markers, loot information, smoke alerts, and last-seen positions. The exact options depend on the selected product tier.',
+    answer: 'The guide covers player ESP, gadget and objective markers, roam timers, smoke alerts, and last-seen positions. The exact options depend on the selected product tier.',
     detail: 'It recommends starting with a restrained layout and enabling only the information you can read comfortably during a team fight.',
     tip: 'Keep the overlay uncluttered: begin with the core indicators, then adjust the range and visibility settings one at a time.',
   }),
@@ -109,7 +109,7 @@ const additionalGuidePosts: ForumPost[] = [
     slug: 'lite-pro-diff', title: 'How do Lite and Pro differ in practice?', upvotes: 53,
     excerpt: 'Lite centers on awareness features, while Pro adds player script tools; here is the short version.',
     category: 'General', categoryTone: 'purple', sourceTitle: 'R6 Lite vs Pro: which tier fits you', sourcePath: '/blog/r6-lite-vs-pro/',
-    answer: 'The comparison guide describes Lite as focused on awareness tools such as ESP, chest and loot information, and zoom. Pro adds aimbot automation features on top of that foundation.',
+    answer: 'The comparison guide describes Lite as focused on awareness tools such as ESP, gadget markers and roam timers, and zoom. Pro adds aimbot automation features on top of that foundation.',
     detail: 'The right choice depends on whether you need map information alone or also want the additional script modules described in the comparison.',
     tip: 'Use the full side-by-side comparison to check specific modules before making a decision.',
   }),
@@ -227,7 +227,7 @@ export const forumPosts: ForumPost[] = [
     excerpt: 'Our comparison guide breaks down the difference: Lite focuses on vision tools; Pro adds script modules.',
     author: 'guide_team', age: '12 hours ago', commentsCount: 1, upvotes: 31, flair: 'Guide Q&A',
     sourceTitle: 'R6 Lite vs Pro: feature comparison', sourcePath: '/blog/r6-lite-vs-pro/',
-    body: ['According to the comparison guide, Lite centers on map awareness features such as player ESP, chest and loot information, zoom, and stream-proof options. Pro includes those features and adds player aimbot such as Aimbot, Smooth Aim, Sticky Aim, Bone Priority, and Hotkey macros.', 'The best fit depends on which features you need. Read the full comparison before choosing.'],
+    body: ['According to the comparison guide, Lite centers on map awareness features such as player ESP, gadget markers and roam timers, zoom, and stream-proof options. Pro includes those features and adds player aimbot such as Aimbot, Smooth Aim, Sticky Aim, Bone Priority, and Hotkey macros.', 'The best fit depends on which features you need. Read the full comparison before choosing.'],
     comments: [
       { author: 'one_more_game', age: '10 hours ago', score: 10, body: 'The comparison page is useful because it shows which modules are included in each tier instead of only listing headlines.' },
     ],
