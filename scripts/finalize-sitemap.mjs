@@ -214,8 +214,8 @@ Allow: /
 
 Disallow: /go/
 
-Sitemap: ${SITE}/sitemap.xml
-${written.map((w) => `Sitemap: ${SITE}/${w.name}`).join('\n')}
+Sitemap: /sitemap.xml
+${written.map((w) => `Sitemap: /${w.name}`).join('\n')}
 
 # RSS: ${SITE}/rss.xml
 `;

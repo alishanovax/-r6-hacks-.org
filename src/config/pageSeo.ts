@@ -72,7 +72,7 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
     title: 'Forum – Most discussed 20 discussions All topics General',
     description:
       'Forum for loader setup, aimbot configs, BattlEye status and product questions. Answers from r6hacks.org guides and community discussions.',
-    h1: 'Forum — Rainbow Six Siege tier help, loader setup and discussions',
+    h1: 'Forum — most discussed topics, general Rainbow Six Siege tier help, loader setup and discussions',
   },
   '/faq/': {
     title: 'FAQ – R6 tiers, bans, setup and BattlEye loader help',
@@ -92,10 +92,10 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
     h1: 'Privacy Policy — r6hacks.org analytics, cookies, checkout and contact data',
   },
   '/about/': {
-    title: 'Aimbot Esp – We publish tier comparisons, setup guides and support',
+    title: 'Aimbot Esp – We publish tier comparisons, setup guides and',
     description:
       'About aimbot, ESP and PC Rainbow Six Siege tools — tier comparisons, loader setup and support at r6hacks.org for Ubisoft Connect players.',
-    h1: 'About aimbot ESP — R6 hacks tiers, setup guides and support',
+    h1: 'About aimbot ESP — we publish tier comparisons, R6 hacks tiers, setup guides and support',
   },
   '/support/': {
     title: 'Support – loader, HWID and checkout help on r6hacks',
@@ -156,7 +156,7 @@ export const BLOG_POST_PAGE_H1: Record<string, string> = {
     'Stream-Proof Overlay Setup — hide wall ESP and script overlays from OBS (R6 hacks)',
   'r6-practice-lobby': 'Shooting Range Practice: Aim Drills Before Ranked (R6 hacks)',
   'r6-radar':
-    'Rainbow Six Siege radar — distance caps, camera zoom and FOV awareness',
+    'Rainbow Six Siege radar — distance caps, mini-radar, extended camera zoom and FOV awareness',
 };
 
 export function getBlogPostSeo(slug: string, fallback: PageSeoEntry): PageSeoEntry {
