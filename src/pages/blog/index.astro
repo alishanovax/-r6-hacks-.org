@@ -38,8 +38,8 @@ const tagIcon = (tag: string): IconName => blogTagIcons[tag] ?? 'tag';
   description={seo.description}
   jsonLd={[
     collectionPageSchema({
-      name: 'Rainbow Six Siege hack guides',
-      description: t.blog.subtitle.replace(/\bblogs\b/gi, 'articles'),
+      name: seo.title,
+      description: seo.description,
       url: '/blog/',
     }),
     breadcrumbSchema(breadcrumbs),

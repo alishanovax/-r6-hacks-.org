@@ -14,8 +14,8 @@ const seo = resolvePageSeo('/privacy/');
   description={seo.description}
   jsonLd={[
     webPageSchema({
-      name: content.title,
-      description: content.description,
+      name: seo.title,
+      description: seo.description,
       url: '/privacy/',
     }),
     breadcrumbSchema([

@@ -63,13 +63,13 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
       'Compare Rainbow Six Siege utilities on PC: HWID spoofer, UGC appeals, and local operator loadout tools at r6hacks.org.',
   },
   '/blog/': {
-    title: 'Rainbow Six Siege Guides | Aimbot, ESP and BattlEye',
+    title: 'R6 Blog — Siege guides on aimbot, ESP and BattlEye',
     description:
-      'Guides for Rainbow Six Siege on aimbot setup, wall ESP, Lite vs Pro, practice lobbies and BattlEye patch-day checks.',
-    h1: 'Rainbow Six Siege guides — aimbot, wall ESP and BattlEye',
+      'Our blog covers Rainbow Six Siege: aimbot setup, wall ESP, Lite vs Pro, practice lobbies and BattlEye patch-day checks.',
+    h1: 'Rainbow Six Siege blog — aimbot, wall ESP and BattlEye',
   },
   '/forum/': {
-    title: 'Rainbow Six Siege Forum — loader and tier help',
+    title: 'Forum — Rainbow Six Siege loader and tier help',
     description:
       'Community forum for loader setup, aimbot configs, BattlEye status and product questions, with answers from r6hacks.org guides.',
     h1: 'Forum — Rainbow Six Siege loader setup, tier help and discussions',
@@ -92,10 +92,10 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
     h1: 'Privacy Policy — r6hacks.org analytics, cookies, checkout and contact data',
   },
   '/about/': {
-    title: 'About R6 Hacks — tiers, setup guides and support',
+    title: 'About — aimbot ESP tiers, setup guides and support',
     description:
       'Who we are: aimbot and ESP tools for Rainbow Six Siege on PC, tier comparisons, loader setup and support at r6hacks.org.',
-    h1: 'About R6 Hacks — tier comparisons, setup guides and support',
+    h1: 'About — aimbot ESP tiers, setup guides and support',
   },
   '/support/': {
     title: 'Support – loader, HWID and checkout help on r6hacks',
@@ -123,13 +123,14 @@ export function getPageSeoEntry(pathname: string): PageSeoEntry | undefined {
 /** Blog post `<title>` / meta description overrides (natural phrasing, one topic term each). */
 export const BLOG_POST_SEO: Record<string, Partial<PageSeoEntry>> = {
   'r6-radar': {
-    title: 'R6 Radar Guide — FOV caps and camera zoom for Siege',
+    title: 'R6 radar guide — distance caps, FOV and camera zoom',
     description:
       'Mini-radar and extended camera zoom for Rainbow Six Siege, with safe distance caps and awareness presets on PC at r6hacks.org.',
   },
   'r6-practice-lobby': {
+    title: 'Practice lobbies — Shooting Range drills before ranked',
     description:
-      'Shooting Range and bot lobbies to practice aimbot smoothness, ESP ranges and loadout presets before ranked matchmaking on PC at r6hacks.org.',
+      'Use Shooting Range and bot lobbies to practice aimbot smoothness, ESP ranges and loadout presets before ranked matchmaking on PC.',
   },
   'r6-stream-proof': {
     title: 'Stream Proof – Hide wall ESP and script overlays from OBS',
@@ -156,7 +157,7 @@ export const BLOG_POST_PAGE_H1: Record<string, string> = {
     'Stream-Proof Overlay Setup — hide wall ESP and script overlays from OBS (R6 hacks)',
   'r6-practice-lobby': 'Shooting Range Practice: Aim Drills Before Ranked (R6 hacks)',
   'r6-radar':
-    'Rainbow Six Siege radar — FOV, camera zoom and map awareness',
+    'Rainbow Six Siege radar — distance caps, FOV and camera zoom',
 };
 
 export function getBlogPostSeo(slug: string, fallback: PageSeoEntry): PageSeoEntry {

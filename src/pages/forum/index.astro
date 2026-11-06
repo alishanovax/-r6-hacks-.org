@@ -22,7 +22,7 @@ const sourceTimestamp = (path?: string) => {
 ---
 
 <BaseLayout title={seo.title} description={seo.description} jsonLd={[
-  collectionPageSchema({ name: 'R6 Hacks Community Forum', description: seo.description, url: '/forum/' }),
+  collectionPageSchema({ name: seo.title, description: seo.description, url: '/forum/' }),
   breadcrumbSchema(breadcrumbs),
 ]}>
   <style slot="head" is:inline>

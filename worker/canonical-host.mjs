@@ -24,7 +24,9 @@ function originBase(url) {
 /** robots.txt: relative Sitemap lines → absolute on the request host (audit crawlers). */
 function rewriteRobotsTxt(text, url) {
   const base = originBase(url);
-  return text.replace(/^Sitemap:\s+\/(\S+)/gm, (_line, path) => `Sitemap: ${base}/${path}`);
+  return text
+    .replace(/^Sitemap:\s+\/(\S+)/gm, (_line, path) => `Sitemap: ${base}/${path}`)
+    .replace(/# RSS: https:\/\/r6hacks\.org\/rss\.xml/, `# RSS: ${base}/rss.xml`);
 }
 
 /** Sitemap index/urlset: on Workers preview, child <loc> must match the crawl host. */
@@ -122,7 +124,11 @@ export default {
     }
 
     const html = await response.text();
-    const body = rewriteHtmlSeoUrls(html, url);
+    let body = rewriteHtmlSeoUrls(html, url);
+    const base = originBase(url);
+    if (base !== CANONICAL_ORIGIN.replace(/\/$/, '')) {
+      body = body.replace(/https:\/\/r6hacks\.org/g, base);
+    }
     const headers = new Headers(response.headers);
     headers.delete('content-length');
     return new Response(body, { status: response.status, headers });

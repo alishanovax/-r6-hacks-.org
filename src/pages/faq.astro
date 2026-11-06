@@ -20,9 +20,8 @@ const faqs = getAllFaqs();
   description={seo.description}
   jsonLd={[
     webPageSchema({
-      name: 'FAQ — R6 Hacks & Products',
-      description:
-        'Answers about Rainbow Six Siege hack tiers, wall ESP, aimbot, HWID tools, blog guides and checkout at r6hacks.org.',
+      name: seo.title,
+      description: seo.description,
       url: '/faq/',
     }),
     faqPageSchema(faqs.map((f, i) => ({ num: String(i + 1).padStart(2, '0'), q: f.q, a: f.a.replace(/<[^>]+>/g, '') }))),

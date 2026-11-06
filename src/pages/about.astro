@@ -16,8 +16,8 @@ const content = t.legalPages.about;
   jsonLd={[
     organizationSchema(),
     webPageSchema({
-      name: content.title,
-      description: content.description,
+      name: seo.title,
+      description: seo.description,
       url: '/about/',
     }),
     breadcrumbSchema([
