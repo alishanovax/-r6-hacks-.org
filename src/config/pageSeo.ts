@@ -14,9 +14,9 @@ export interface PageSeoEntry {
 
 export const PAGE_SEO: Record<string, PageSeoEntry> = {
   '/': {
-    title: 'R6 Hacks – Check status before you queue after BattlEye',
+    title: 'R6 Hacks — tactical ESP, tuned aim assist for ranked on PC',
     description:
-      'R6 hacks for Rainbow Six Siege on PC: aimbot, player ESP, gadget ESP, Lite/Pro/Elite tiers, loader guides, and secure checkout at r6hacks.org.',
+      'Tactical overlays, tuned aim assist, and operator ESP for ranked—explore modules, compare forum settings, and shape PC sessions at r6hacks.org.',
     h1: 'R6 Hacks',
     h1Accent:
       'Check status before you queue after BattlEye — Rainbow Six Siege PC, Aimbot, ESP, Gadget ESP & Configs',
