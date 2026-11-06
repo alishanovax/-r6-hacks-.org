@@ -17,6 +17,23 @@ function seoOrigin(url) {
   return CANONICAL_ORIGIN;
 }
 
+function originBase(url) {
+  return seoOrigin(url).replace(/\/$/, '');
+}
+
+/** robots.txt: relative Sitemap lines → absolute on the request host (audit crawlers). */
+function rewriteRobotsTxt(text, url) {
+  const base = originBase(url);
+  return text.replace(/^Sitemap:\s+\/(\S+)/gm, (_line, path) => `Sitemap: ${base}/${path}`);
+}
+
+/** Sitemap index/urlset: on Workers preview, child <loc> must match the crawl host. */
+function rewriteSitemapXml(text, url) {
+  const base = originBase(url);
+  if (base === CANONICAL_ORIGIN.replace(/\/$/, '')) return text;
+  return text.replace(/https:\/\/r6hacks\.org/g, base);
+}
+
 function rewriteHtmlSeoUrls(html, url) {
   const canonical = `${seoOrigin(url)}${trailingSlashPath(url.pathname)}`;
   return html
@@ -73,15 +90,28 @@ export default {
 
     const response = await fetchAsset(request, env);
 
+    if (url.pathname === '/robots.txt' && response.status === 200) {
+      const text = await response.text();
+      const body = rewriteRobotsTxt(text, url);
+      const headers = new Headers(response.headers);
+      headers.set('content-type', 'text/plain; charset=utf-8');
+      headers.delete('content-length');
+      return new Response(body, { status: 200, headers });
+    }
+
     if (isSitemapOrFeedPath(url.pathname)) {
       const headers = new Headers(response.headers);
+      const isXml = url.pathname.endsWith('.xml');
       if (response.status === 200) {
+        const raw = await response.text();
+        const body =
+          isXml && url.pathname.includes('sitemap') ? rewriteSitemapXml(raw, url) : raw;
         headers.set(
           'content-type',
-          url.pathname.endsWith('.xml') ? 'application/xml; charset=utf-8' : 'application/rss+xml; charset=utf-8',
+          isXml ? 'application/xml; charset=utf-8' : 'application/rss+xml; charset=utf-8',
         );
         headers.delete('content-length');
-        return new Response(response.body, { status: response.status, headers });
+        return new Response(body, { status: 200, headers });
       }
       return response;
     }
