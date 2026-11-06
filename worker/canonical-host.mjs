@@ -80,7 +80,7 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    const hostTarget = canonicalHostRedirectUrl(url);
+    const hostTarget = canonicalRequestRedirectUrl(request);
     if (hostTarget) {
       return Response.redirect(hostTarget, 301);
     }
