@@ -53,7 +53,7 @@ function linkify(text: string): string {
       </figure>
 
       <header class="mt-8 space-y-4 text-left">
-        <h1 class="text-3xl font-bold normal-case leading-tight md:text-4xl">{copy.h1}</h1>
+        <h1 class="text-3xl font-bold normal-case leading-tight md:text-4xl">{seo.h1 ?? copy.h1}</h1>
         <h2 class="text-xl font-semibold text-foreground">{copy.keywordH2}</h2>
         <p class="text-lg leading-relaxed text-muted-foreground">{copy.intro}</p>
         <Button as="a" href={checkout} variant="primary" size="lg" class="rounded-xl">

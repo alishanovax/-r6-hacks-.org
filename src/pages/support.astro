@@ -14,8 +14,8 @@ const seo = resolvePageSeo('/support/');
   description={seo.description}
   jsonLd={[
     webPageSchema({
-      name: t.support.title,
-      description: t.support.subtitle,
+      name: seo.title,
+      description: seo.description,
       url: '/support/',
     }),
     breadcrumbSchema([
@@ -32,5 +32,5 @@ const seo = resolvePageSeo('/support/');
       ]}
     />
   </div>
-  <ContactSupportSection titleId="support-page-title" showTicketTips />
+  <ContactSupportSection titleId="support-page-title" showTicketTips heading={seo.h1} />
 </BaseLayout>

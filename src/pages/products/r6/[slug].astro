@@ -2,7 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getAllProductSlugs, getProductPage, productHub } from '../../../data/products';
 import { pageTitle } from '../../../config/seo';
-import { getPageSeoEntry } from '../../../config/pageSeo';
+import { getPageSeoEntry, productPageH1 } from '../../../config/pageSeo';
 import { breadcrumbSchema, productSchema } from '../../../utils/schema';
 import ProductDetail from '../../../components/ProductDetail.astro';
 
@@ -23,6 +23,7 @@ const metaTitle = seoEntry?.title ?? pageTitle(`Buy ${product.title}`);
 const metaDescription =
   seoEntry?.description ??
   `Buy ${product.title} R6 hacks — ${product.desc}`;
+const pageH1 = productPageH1(pagePath, product.title);
 const breadcrumbs = [
   { name: 'Home', path: '/' },
   { name: 'Products', path: productHub.path },
@@ -45,5 +46,5 @@ const breadcrumbs = [
     breadcrumbSchema(breadcrumbs),
   ]}
 >
-  <ProductDetail product={product} breadcrumbs={breadcrumbs} />
+  <ProductDetail product={product} breadcrumbs={breadcrumbs} pageH1={pageH1} />
 </BaseLayout>

@@ -25,7 +25,7 @@ const seo = resolvePageSeo('/terms/');
   ]}
 >
   <LegalPage
-    title={content.title}
+    title={seo.h1 ?? content.title}
     description={content.description}
     breadcrumbLabel="Terms & Conditions"
     keywordSubheading="Terms: R6 Hacks"
