@@ -147,6 +147,11 @@ export const BLOG_POST_SEO: Record<string, Partial<PageSeoEntry>> = {
     description:
       'Fix BattlEye verification errors, reload the loader after patches, and when to use HWID or UGC recovery tools on r6hacks.org.',
   },
+  'buy-r6-hacks': {
+    title: 'Buy R6 hacks in 2026 — secure Lite, Pro and Elite checkout',
+    description:
+      'How to buy R6 on PC: pick Lite, Pro or Elite, complete secure checkout, get operator portal access, install the loader, and check BattlEye status before ranked.',
+  },
 };
 
 /** Optional on-page H1 overrides (blog posts). */

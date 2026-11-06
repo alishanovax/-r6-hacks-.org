@@ -192,7 +192,9 @@ const articleH1 = blogPostPageH1(post.slug, post.title);
                         ? 'Checkout after Shooting Range drills (CTA)'
                         : post.slug === 'r6-stream-proof'
                           ? 'Buy stream-proof tier (inline CTA)'
-                          : undefined
+                          : post.slug === 'buy-r6-hacks'
+                            ? 'Complete Lite, Pro or Elite checkout'
+                            : undefined
                     }
                   />
                 );
@@ -212,7 +214,9 @@ const articleH1 = blogPostPageH1(post.slug, post.title);
                       ? 'Checkout after Shooting Range drills'
                       : post.slug === 'r6-radar'
                         ? 'Buy Lite radar hack tier'
-                        : 'Buy R6 Hacks'
+                        : post.slug === 'buy-r6-hacks'
+                          ? 'Start buy R6 checkout flow'
+                          : 'Buy R6 Hacks'
               }
               <Icon name="arrowRight" size={17} />
             </Button>
@@ -226,7 +230,9 @@ const articleH1 = blogPostPageH1(post.slug, post.title);
                       ? 'Compare Lite and Pro tiers'
                       : post.slug === 'r6-radar'
                         ? 'Open R6 product catalog (radar)'
-                        : 'View products'
+                        : post.slug === 'buy-r6-hacks'
+                          ? 'Browse tier pages before checkout'
+                          : 'View products'
               }
             </Button>
             <Button as="a" href={ROUTES.blog} variant="outline">
@@ -239,7 +245,9 @@ const articleH1 = blogPostPageH1(post.slug, post.title);
                       ? 'More Shooting Range guides'
                       : post.slug === 'r6-radar'
                         ? 'More radar and ESP guides'
-                        : 'More articles'
+                        : post.slug === 'buy-r6-hacks'
+                          ? 'More purchase and setup guides'
+                          : 'More articles'
               }
               <Icon name="arrowRight" size={17} />
             </Button>

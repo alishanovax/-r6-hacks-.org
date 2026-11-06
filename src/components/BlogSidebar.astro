@@ -74,6 +74,14 @@ const radarGuideProductLinks: { label: string; href: string; icon: IconName }[] 
   { label: 'UGC appeals (radar)', href: productPath('ugc'), icon: 'sidebarUgc' },
 ];
 
+const buyGuideProductLinks: { label: string; href: string; icon: IconName }[] = [
+  { label: 'Compare all R6 hack tiers', href: ROUTES.products, icon: 'sidebarHub' },
+  { label: 'Lite ESP product page', href: productPath('lite'), icon: 'sidebarElite' },
+  { label: 'Pro aimbot product page', href: productPath('pro'), icon: 'sidebarElite' },
+  { label: 'Elite automation product page', href: ROUTES.productsElite, icon: 'sidebarElite' },
+  { label: 'HWID spoofer add-on', href: productPath('hwid-spoofer'), icon: 'sidebarHwid' },
+];
+
 const productLinks =
   post.slug === 'battleye-fix'
     ? eacGuideProductLinks
@@ -83,7 +91,9 @@ const productLinks =
         ? practiceLobbyProductLinks
         : post.slug === 'r6-radar'
           ? radarGuideProductLinks
-          : defaultProductLinks;
+          : post.slug === 'buy-r6-hacks'
+            ? buyGuideProductLinks
+            : defaultProductLinks;
 ---
 
 <aside
@@ -179,7 +189,9 @@ const productLinks =
                 ? 'Checkout after range drills'
                 : post.slug === 'r6-radar'
                   ? 'Checkout Lite radar tier'
-                  : 'Buy R6 Hacks'
+                  : post.slug === 'buy-r6-hacks'
+                    ? 'Open secure checkout (buy guide)'
+                    : 'Buy R6 Hacks'
         }
       </span>
       <Icon name="arrowRight" size={16} class="shrink-0" />
