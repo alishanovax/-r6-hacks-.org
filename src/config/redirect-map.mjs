@@ -129,25 +129,43 @@ function requestUsedHttp(headers) {
   return false;
 }
 
-/** True when request should 301 to apex HTTPS r6hacks.org (same path/query). */
-export function canonicalHostRedirectUrl(url, requestHeaders) {
-  const host = url.hostname.toLowerCase();
-  if (!isCanonicalProductionHost(host)) return null;
+/** Apply HTTPS, apex host, and path 301 map in one hop (SEO audit friendly). */
+export function resolveCanonicalRedirect(request) {
+  const url = new URL(request.url);
+  const target = new URL(url.href);
+  let changed = false;
 
-  const needsApex = host === 'www.r6hacks.org';
+  const host = target.hostname.toLowerCase();
+  const production = isCanonicalProductionHost(host);
   const needsHttps =
-    url.protocol === 'http:' ||
-    (requestHeaders && requestUsedHttp(requestHeaders));
+    target.protocol === 'http:' || requestUsedHttp(request.headers);
+  const needsApex = host === 'www.r6hacks.org';
 
-  if (!needsHttps && !needsApex) return null;
+  if (production && (needsHttps || needsApex)) {
+    target.protocol = 'https:';
+    target.hostname = 'r6hacks.org';
+    changed = true;
+  } else if (needsHttps) {
+    target.protocol = 'https:';
+    changed = true;
+  }
 
-  const target = new URL(url);
-  target.protocol = 'https:';
-  target.hostname = 'r6hacks.org';
+  const pathTarget = resolve301Redirect(target.pathname);
+  if (pathTarget) {
+    target.pathname = pathTarget;
+    target.search = url.search;
+    if (production) {
+      target.protocol = 'https:';
+      target.hostname = 'r6hacks.org';
+    }
+    changed = true;
+  }
+
+  if (!changed) return null;
   return target.toString();
 }
 
-/** Worker/fetch entry: pass full Request for Cloudflare forwarded-proto. */
+/** @deprecated Use resolveCanonicalRedirect */
 export function canonicalRequestRedirectUrl(request) {
-  return canonicalHostRedirectUrl(new URL(request.url), request.headers);
+  return resolveCanonicalRedirect(request);
 }

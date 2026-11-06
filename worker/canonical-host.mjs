@@ -1,8 +1,17 @@
 import {
   CANONICAL_ORIGIN,
-  canonicalRequestRedirectUrl,
-  resolve301Redirect,
+  resolveCanonicalRedirect,
 } from '../src/config/redirect-map.mjs';
+
+const HSTS_VALUE = 'max-age=31536000; includeSubDomains; preload';
+
+function withSecurityHeaders(headers, url) {
+  const host = url.hostname.toLowerCase();
+  if (url.protocol === 'https:' && (host === 'r6hacks.org' || host.endsWith('.workers.dev'))) {
+    headers.set('strict-transport-security', HSTS_VALUE);
+  }
+  return headers;
+}
 
 function trailingSlashPath(pathname) {
   if (!pathname || pathname === '/') return '/';
@@ -80,14 +89,9 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    const hostTarget = canonicalRequestRedirectUrl(request);
-    if (hostTarget) {
-      return Response.redirect(hostTarget, 301);
-    }
-
-    const pathTarget = resolve301Redirect(url.pathname);
-    if (pathTarget) {
-      return Response.redirect(`${CANONICAL_ORIGIN}${pathTarget}`, 301);
+    const redirectTarget = resolveCanonicalRedirect(request);
+    if (redirectTarget) {
+      return Response.redirect(redirectTarget, 301);
     }
 
     const response = await fetchAsset(request, env);
@@ -98,6 +102,7 @@ export default {
       const headers = new Headers(response.headers);
       headers.set('content-type', 'text/plain; charset=utf-8');
       headers.delete('content-length');
+      withSecurityHeaders(headers, url);
       return new Response(body, { status: 200, headers });
     }
 
@@ -113,14 +118,18 @@ export default {
           isXml ? 'application/xml; charset=utf-8' : 'application/rss+xml; charset=utf-8',
         );
         headers.delete('content-length');
+        withSecurityHeaders(headers, url);
         return new Response(body, { status: 200, headers });
       }
-      return response;
+      withSecurityHeaders(headers, url);
+      return new Response(response.body, { status: response.status, headers });
     }
 
     const contentType = response.headers.get('content-type') ?? '';
     if (response.status !== 200 || !contentType.includes('text/html')) {
-      return response;
+      const headers = new Headers(response.headers);
+      withSecurityHeaders(headers, url);
+      return new Response(response.body, { status: response.status, headers });
     }
 
     const html = await response.text();
@@ -131,6 +140,7 @@ export default {
     }
     const headers = new Headers(response.headers);
     headers.delete('content-length');
+    withSecurityHeaders(headers, url);
     return new Response(body, { status: response.status, headers });
   },
 };
