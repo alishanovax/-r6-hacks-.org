@@ -3,10 +3,6 @@ Allow: /
 
 Disallow: /go/
 
-Sitemap: /sitemap.xml
-Sitemap: /sitemap-pages.xml
-Sitemap: /sitemap-products.xml
-Sitemap: /sitemap-blog.xml
-Sitemap: /sitemap-forum.xml
+Sitemap: https://r6hacks.org/sitemap.xml
 
 # RSS: https://r6hacks.org/rss.xml

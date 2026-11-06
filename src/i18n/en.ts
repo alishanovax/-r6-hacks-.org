@@ -22,11 +22,11 @@ export const en: Translations = {
   ],
   hero: {
     status: 'Rainbow Six Siege · PC',
-    eyebrow: 'R6 hacks for PC',
+    eyebrow: 'Ubisoft PC',
     h1: 'R6 Hacks',
-    h1Accent: 'Rainbow Six Siege PC — Aimbot, ESP, Gadget ESP & Configs',
+    h1Accent: '',
     subtitle:
-      'R6 hacks for PC ranked and unranked play — configurable aimbot FOV, operator ESP, attacker and defender gadget ESP, skeleton and box overlays, and save/load config profiles. Check status before you queue after BattlEye updates.',
+      'Buy undetected R6 hacks for Ubisoft PC—player ESP, operator ESP, gadget ESP, smooth aim and configs. Compare Lite, Pro and Elite checkout for instant loader access.',
     ctaPrimary: 'Buy hacks',
     ctaDiscord: 'Join Discord',
     modesLabel: 'Game modes',

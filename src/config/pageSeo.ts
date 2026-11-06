@@ -14,12 +14,10 @@ export interface PageSeoEntry {
 
 export const PAGE_SEO: Record<string, PageSeoEntry> = {
   '/': {
-    title: 'R6 Hacks — tactical ESP, tuned aim assist for ranked on PC',
+    title: 'Tactical overlays, tuned aim assist, operator ESP | R6 Hacks',
     description:
-      'Tactical overlays, tuned aim assist, and operator ESP for ranked—explore modules, compare forum settings, and shape PC sessions at r6hacks.org.',
-    h1: 'R6 Hacks',
-    h1Accent:
-      'Check status before you queue after BattlEye — Rainbow Six Siege PC, Aimbot, ESP, Gadget ESP & Configs',
+      'Tactical overlays, tuned aim assist, and operator ESP that stay readable in ranked—explore modules, compare forum settings, and PC sessions at r6hacks.org.',
+    h1: 'R6 HACKS',
   },
   '/products/r6/': {
     title: 'Rainbow Six Siege – Buy R6 PC hacks shop and tiers',
