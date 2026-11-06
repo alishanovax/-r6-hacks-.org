@@ -3,6 +3,7 @@
 name = "r6-hacks--org"
 main = "worker/canonical-host.mjs"
 compatibility_date = "2025-10-11"
+workers_dev = true
 
 # Cloudflare CI runs `npx wrangler deploy` only; this produces dist/ before upload.
 [build]
@@ -14,12 +15,4 @@ binding = "ASSETS"
 run_worker_first = true
 not_found_handling = "404-page"
 html_handling = "none"
-
-# Serve sitemaps and the app on the production hostname (same Worker as workers.dev).
-[[routes]]
-pattern = "r6hacks.org/*"
-zone_name = "r6hacks.org"
-
-[[routes]]
-pattern = "www.r6hacks.org/*"
-zone_name = "r6hacks.org"
+# Attach r6hacks.org to this Worker in Cloudflare Dashboard (zone is on another account).
