@@ -9,7 +9,6 @@ import {
   SITE_ORIGIN,
 } from '../config/seo';
 import { FAVICON_VERSION } from '../config/site';
-import SocialShare from '../components/SocialShare.astro';
 import JsonLd from '../components/JsonLd.astro';
 
 interface Props {
@@ -85,7 +84,6 @@ const navLinks = [
     </header>
     <main id="main-content" class="mx-auto max-w-4xl px-5 py-10">
       <slot />
-      <SocialShare title={title} class="mt-10 border-t border-border pt-6" />
     </main>
     <footer class="border-t border-border py-8 text-center text-sm text-muted-foreground">
       <p>

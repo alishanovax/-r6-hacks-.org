@@ -1,6 +1,6 @@
 import {
   CANONICAL_ORIGIN,
-  canonicalHostRedirectUrl,
+  canonicalRequestRedirectUrl,
   resolve301Redirect,
 } from '../src/config/redirect-map.mjs';
 

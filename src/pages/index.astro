@@ -9,8 +9,6 @@ import { resolvePageSeo } from '../config/seo';
 import { websiteSchema } from '../utils/schema';
 import { webpSrc } from '../utils/responsiveImage';
 import { PRIMARY_CHEAT_IMAGE } from '../config/siteImages';
-import SocialShare from '../components/SocialShare.astro';
-
 const seo = resolvePageSeo('/');
 
 const heroLcpImage = webpSrc(PRIMARY_CHEAT_IMAGE, 512);
@@ -34,7 +32,4 @@ const heroLcpImage = webpSrc(PRIMARY_CHEAT_IMAGE, 512);
   <FeaturesSection />
   <ProductsSection maxProducts={6} useCarousel={false} uniqueCardAnchors />
   <ContentSections blogPostCount={3} showWorkflow={false} showFaq={false} uniqueBlogAnchors />
-  <div class="mx-auto max-w-6xl px-5 pb-8">
-    <SocialShare title={seo.title} class="border-t border-border pt-6" />
-  </div>
 </BaseLayout>

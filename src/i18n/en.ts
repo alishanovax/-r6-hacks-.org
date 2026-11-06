@@ -26,7 +26,7 @@ export const en: Translations = {
     h1: 'R6 Hacks',
     h1Accent: '',
     subtitle:
-      'Buy undetected R6 hacks for Ubisoft PC—player ESP, operator ESP, gadget ESP, smooth aim and configs. Compare Lite, Pro and Elite checkout for instant loader access.',
+      'Buy undetected R6 hacks for Ubisoft PC—tactical overlays, tuned aim assist, operator ESP, and gadget ESP. Compare Lite, Pro and Elite checkout for instant loader access.',
     ctaPrimary: 'Buy hacks',
     ctaDiscord: 'Join Discord',
     modesLabel: 'Game modes',
@@ -42,7 +42,7 @@ export const en: Translations = {
     eyebrow: 'Hack features',
     title: 'R6 hack modules',
     subtitle:
-      'Aimbot, player ESP, gadget ESP, and config tools aligned with the Rainbow Six Siege PC product listing — for ranked, unranked, and quick match playlists.',
+      'Tactical overlays and tuned aim assist stay readable in ranked—plus aimbot, operator ESP, gadget ESP, and config tools for Rainbow Six Siege on PC.',
     items: [
       {
         title: 'Aimbot',
@@ -643,7 +643,7 @@ export const en: Translations = {
     about: {
       title: 'About aimbot ESP — we publish tier comparisons, setup guides and support',
       description:
-        'Guides for aimbot ESP on PC, tier comparisons and loader support — who we are and how r6hacks.org ships updates.',
+        'About aimbot ESP tiers, setup guides and support on PC—who we are, tier comparisons, loader help, and how r6hacks.org ships updates.',
       sections: [
         {
           heading: 'Who we are',
