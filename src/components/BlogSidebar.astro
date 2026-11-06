@@ -82,6 +82,14 @@ const buyGuideProductLinks: { label: string; href: string; icon: IconName }[] = 
   { label: 'HWID spoofer add-on', href: productPath('hwid-spoofer'), icon: 'sidebarHwid' },
 ];
 
+const patchGuideProductLinks: { label: string; href: string; icon: IconName }[] = [
+  { label: 'Live status — R6 product hub', href: ROUTES.products, icon: 'sidebarHub' },
+  { label: 'Reload Lite ESP after updates', href: productPath('lite'), icon: 'sidebarElite' },
+  { label: 'Reload Pro aimbot after updates', href: productPath('pro'), icon: 'sidebarElite' },
+  { label: 'Elite tier patch-day presets', href: ROUTES.productsElite, icon: 'sidebarElite' },
+  { label: 'HWID spoofer if verify fails', href: productPath('hwid-spoofer'), icon: 'sidebarHwid' },
+];
+
 const productLinks =
   post.slug === 'battleye-fix'
     ? eacGuideProductLinks
@@ -93,7 +101,9 @@ const productLinks =
           ? radarGuideProductLinks
           : post.slug === 'buy-r6-hacks'
             ? buyGuideProductLinks
-            : defaultProductLinks;
+            : post.slug === 'battleye-patch'
+              ? patchGuideProductLinks
+              : defaultProductLinks;
 ---
 
 <aside
@@ -191,7 +201,9 @@ const productLinks =
                   ? 'Checkout Lite radar tier'
                   : post.slug === 'buy-r6-hacks'
                     ? 'Open secure checkout (buy guide)'
-                    : 'Buy R6 Hacks'
+                    : post.slug === 'battleye-patch'
+                      ? 'Checkout after status is green'
+                      : 'Buy R6 Hacks'
         }
       </span>
       <Icon name="arrowRight" size={16} class="shrink-0" />

@@ -2,7 +2,7 @@
 import '../../styles/blog-pages.css';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { t } from '../../i18n';
-import { getAllBlogSlugs, getBlogPost, getRelatedBlogPosts } from '../../data/blog';
+import { getAllBlogSlugs, getBlogPost, getBlogPostsBySlugs, getRelatedBlogPosts } from '../../data/blog';
 import { cheatMetaDescription, pageTitle } from '../../config/seo';
 import { blogPostLayoutTitle, blogPostPageH1, getBlogPostSeo } from '../../config/pageSeo';
 import {
@@ -49,7 +49,10 @@ const breadcrumbs = [
   { name: post.title, path: postPath },
 ];
 
-const related = getRelatedBlogPosts(post.slug, 3);
+const related =
+  post.slug === 'battleye-patch'
+    ? getBlogPostsBySlugs(['battleye-fix', 'buy-r6-hacks', 'r6-external-loader'])
+    : getRelatedBlogPosts(post.slug, 3);
 
 function linkify(text: string): string {
   return text
@@ -194,7 +197,9 @@ const articleH1 = blogPostPageH1(post.slug, post.title);
                           ? 'Buy stream-proof tier (inline CTA)'
                           : post.slug === 'buy-r6-hacks'
                             ? 'Complete Lite, Pro or Elite checkout'
-                            : undefined
+                            : post.slug === 'battleye-patch'
+                              ? 'Open checkout after patch-day verify'
+                              : undefined
                     }
                   />
                 );
@@ -216,7 +221,9 @@ const articleH1 = blogPostPageH1(post.slug, post.title);
                         ? 'Buy Lite radar hack tier'
                         : post.slug === 'buy-r6-hacks'
                           ? 'Start buy R6 checkout flow'
-                          : 'Buy R6 Hacks'
+                          : post.slug === 'battleye-patch'
+                            ? 'Checkout once loader status is green'
+                            : 'Buy R6 Hacks'
               }
               <Icon name="arrowRight" size={17} />
             </Button>
@@ -232,7 +239,9 @@ const articleH1 = blogPostPageH1(post.slug, post.title);
                         ? 'Open R6 product catalog (radar)'
                         : post.slug === 'buy-r6-hacks'
                           ? 'Browse tier pages before checkout'
-                          : 'View products'
+                          : post.slug === 'battleye-patch'
+                            ? 'Open tier pages for post-patch reload'
+                            : 'View products'
               }
             </Button>
             <Button as="a" href={ROUTES.blog} variant="outline">
@@ -247,7 +256,9 @@ const articleH1 = blogPostPageH1(post.slug, post.title);
                         ? 'More radar and ESP guides'
                         : post.slug === 'buy-r6-hacks'
                           ? 'More purchase and setup guides'
-                          : 'More articles'
+                          : post.slug === 'battleye-patch'
+                            ? 'More BattlEye and loader guides'
+                            : 'More articles'
               }
               <Icon name="arrowRight" size={17} />
             </Button>

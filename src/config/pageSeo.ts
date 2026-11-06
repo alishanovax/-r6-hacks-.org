@@ -65,8 +65,8 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
   '/blog/': {
     title: 'R6 Blog — Siege guides on aimbot, ESP and BattlEye',
     description:
-      'Our blog covers Rainbow Six Siege: aimbot setup, wall ESP, Lite vs Pro, practice lobbies and BattlEye patch-day checks.',
-    h1: 'Rainbow Six Siege blog — aimbot, wall ESP and BattlEye',
+      'R6 hack guides for Rainbow Six Siege on PC: aimbot setup, wall ESP, Lite vs Pro tiers, practice lobbies, and BattlEye patch-day checklists by topic.',
+    h1: 'Rainbow Six Siege guides — aimbot, wall ESP and BattlEye',
   },
   '/forum/': {
     title: 'Forum — Rainbow Six Siege loader and tier help',
@@ -151,6 +151,11 @@ export const BLOG_POST_SEO: Record<string, Partial<PageSeoEntry>> = {
     title: 'Buy R6 hacks in 2026 — secure Lite, Pro and Elite checkout',
     description:
       'How to buy R6 on PC: pick Lite, Pro or Elite, complete secure checkout, get operator portal access, install the loader, and check BattlEye status before ranked.',
+  },
+  'battleye-patch': {
+    title: 'R6 hacks BattlEye checklist — patch-day loader reload',
+    description:
+      'After each Rainbow Six Siege patch, check the status banner, reload your loader, verify ESP in a lobby, and run conservative presets before ranked on PC.',
   },
 };
 
