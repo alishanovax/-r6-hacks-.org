@@ -25,7 +25,7 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
     title: 'Rainbow Six Siege – Buy R6 PC hacks shop and tiers',
     description:
       'Rainbow Six Siege shop: R6 hacks for PC — Elite aimbot, wall ESP, HWID spoofer, UGC recovery and Operator loadout tools checkout at r6hacks.org.',
-    h1: 'Buy Rainbow Six Siege — Elite, HWID spoofer, Operator loadout tools PC hacks shop tiers',
+    h1: 'Rainbow Six Siege — R6 hack tiers and checkout',
   },
   '/products/r6/lite/': {
     title: 'R6 Lite Hacks | Player ESP, Radar & Loot Timers',
@@ -63,16 +63,16 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
       'Compare Rainbow Six Siege utilities on PC: HWID spoofer, UGC appeals, and local operator loadout tools at r6hacks.org.',
   },
   '/blog/': {
-    title: 'Rainbow Six Siege Hack Blogs | Aimbot, wall ESP & BattlEye',
+    title: 'Rainbow Six Siege Guides | Aimbot, ESP and BattlEye',
     description:
-      'Blogs: Read Rainbow Six Siege hack guides on aimbot setup, wall ESP, Lite vs Pro, training grounds practice and BattlEye patch-day checks.',
-    h1: 'Latest Rainbow Six Siege hack guide blogs — aimbot, wall ESP & BattlEye',
+      'Guides for Rainbow Six Siege on aimbot setup, wall ESP, Lite vs Pro, practice lobbies and BattlEye patch-day checks.',
+    h1: 'Rainbow Six Siege guides — aimbot, wall ESP and BattlEye',
   },
   '/forum/': {
-    title: 'Forum – Most discussed 20 discussions All topics General',
+    title: 'Rainbow Six Siege Forum — loader and tier help',
     description:
-      'Forum for loader setup, aimbot configs, BattlEye status and product questions. Answers from r6hacks.org guides and community discussions.',
-    h1: 'Forum — most discussed topics, general Rainbow Six Siege tier help, loader setup and discussions',
+      'Community forum for loader setup, aimbot configs, BattlEye status and product questions, with answers from r6hacks.org guides.',
+    h1: 'Forum — Rainbow Six Siege loader setup, tier help and discussions',
   },
   '/faq/': {
     title: 'FAQ – R6 tiers, bans, setup and BattlEye loader help',
@@ -92,10 +92,10 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
     h1: 'Privacy Policy — r6hacks.org analytics, cookies, checkout and contact data',
   },
   '/about/': {
-    title: 'Aimbot Esp – We publish tier comparisons, setup guides and',
+    title: 'About R6 Hacks — tiers, setup guides and support',
     description:
-      'About aimbot, ESP and PC Rainbow Six Siege tools — tier comparisons, loader setup and support at r6hacks.org for Ubisoft Connect players.',
-    h1: 'About aimbot ESP — we publish tier comparisons, R6 hacks tiers, setup guides and support',
+      'Who we are: aimbot and ESP tools for Rainbow Six Siege on PC, tier comparisons, loader setup and support at r6hacks.org.',
+    h1: 'About R6 Hacks — tier comparisons, setup guides and support',
   },
   '/support/': {
     title: 'Support – loader, HWID and checkout help on r6hacks',
@@ -120,12 +120,12 @@ export function getPageSeoEntry(pathname: string): PageSeoEntry | undefined {
   return PAGE_SEO[normalizeSeoPath(pathname)];
 }
 
-/** Blog post `<title>` / meta description overrides (exact audit phrases). */
+/** Blog post `<title>` / meta description overrides (natural phrasing, one topic term each). */
 export const BLOG_POST_SEO: Record<string, Partial<PageSeoEntry>> = {
   'r6-radar': {
-    title: 'Distance Caps – Mini-radar and extended camera zoom Siege',
+    title: 'R6 Radar Guide — FOV caps and camera zoom for Siege',
     description:
-      'Distance Caps: Mini-radar and extended camera zoom for Rainbow Six Siege — safe FOV caps and awareness presets on PC at r6hacks.org.',
+      'Mini-radar and extended camera zoom for Rainbow Six Siege, with safe distance caps and awareness presets on PC at r6hacks.org.',
   },
   'r6-practice-lobby': {
     description:
@@ -156,7 +156,7 @@ export const BLOG_POST_PAGE_H1: Record<string, string> = {
     'Stream-Proof Overlay Setup — hide wall ESP and script overlays from OBS (R6 hacks)',
   'r6-practice-lobby': 'Shooting Range Practice: Aim Drills Before Ranked (R6 hacks)',
   'r6-radar':
-    'Rainbow Six Siege radar — distance caps, mini-radar, extended camera zoom and FOV awareness',
+    'Rainbow Six Siege radar — FOV, camera zoom and map awareness',
 };
 
 export function getBlogPostSeo(slug: string, fallback: PageSeoEntry): PageSeoEntry {
