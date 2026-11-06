@@ -66,7 +66,7 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
     title: 'R6 blogs — Siege guides on aimbot, ESP and BattlEye',
     description:
       'Browse R6 blogs for Rainbow Six Siege on PC: aimbot setup, ESP and wall ESP tiers, Lite vs Pro, practice lobbies, and BattlEye patch-day checklists.',
-    h1: 'R6 Siege guides — aimbot, ESP, wall ESP and BattlEye',
+    h1: 'R6 blogs & Siege guides — aimbot, ESP, wall ESP and BattlEye',
   },
   '/forum/': {
     title: 'Forum — Rainbow Six Siege loader and tier help',
@@ -94,7 +94,7 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
   '/about/': {
     title: 'About — aimbot ESP tiers, setup guides and support',
     description:
-      'Who we are: aimbot and ESP tools for Rainbow Six Siege on PC, tier comparisons, loader setup and support at r6hacks.org.',
+      'About r6hacks.org: aimbot esp for Lite, Pro and Elite on PC — operator portal loader setup, FAQ answers, Discord support, and live status before checkout.',
     h1: 'About — aimbot ESP tiers, setup guides and support',
   },
   '/support/': {
@@ -143,9 +143,9 @@ export const BLOG_POST_SEO: Record<string, Partial<PageSeoEntry>> = {
       'Ranked aimbot configs for Rainbow Six Siege: bone priority, prediction, and smoothness presets on PC at r6hacks.org.',
   },
   'battleye-fix': {
-    title: 'BattlEye Error Fix — Verification & Loader Help',
+    title: 'BattlEye verification fix — loader reload help on R6 Siege',
     description:
-      'Fix BattlEye verification errors, reload the loader after patches, and when to use HWID or UGC recovery tools on r6hacks.org.',
+      'BattlEye verification errors on PC: verify game files, cold reboot, loader order, and when HWID or UGC recovery applies on r6hacks.org.',
   },
   'buy-r6-hacks': {
     title: 'Buy R6 hacks in 2026 — secure Lite, Pro and Elite checkout',
@@ -162,7 +162,7 @@ export const BLOG_POST_SEO: Record<string, Partial<PageSeoEntry>> = {
 /** Optional on-page H1 overrides (blog posts). */
 export const BLOG_POST_PAGE_H1: Record<string, string> = {
   'battleye-fix':
-    'What the BattlEye error means — unable to verify Rainbow Six Siege (R6 hacks)',
+    'BattlEye verification fix — loader reload help when Rainbow Six Siege will not launch',
   'r6-stream-proof':
     'Stream-Proof Overlay Setup — hide wall ESP and script overlays from OBS (R6 hacks)',
   'r6-practice-lobby': 'Shooting Range Practice: Aim Drills Before Ranked (R6 hacks)',
