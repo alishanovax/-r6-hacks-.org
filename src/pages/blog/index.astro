@@ -78,7 +78,7 @@ const tagIcon = (tag: string): IconName => blogTagIcons[tag] ?? 'tag';
   >
     <div class="mx-auto max-w-6xl px-5">
       <header class="section-header max-w-2xl">
-        <p class="section-header__eyebrow">Hack guides</p>
+        <p class="section-header__eyebrow">Siege articles</p>
         <h1 id="blog-latest-title" class="section-header__title">{seo.h1 ?? t.blog.latestTitle}</h1>
         <p class="section-header__subtitle">
           Filter by topic or sort to find aimbot, ESP, wall ESP and patch-day articles.
@@ -129,7 +129,7 @@ const tagIcon = (tag: string): IconName => blogTagIcons[tag] ?? 'tag';
       {
         featured && (
           <div id="blog-featured" class="mt-10" data-index-featured aria-labelledby="blog-featured-heading">
-            <h2 id="blog-featured-heading" class="text-xl font-semibold text-foreground">Featured guide</h2>
+            <h2 id="blog-featured-heading" class="text-xl font-semibold text-foreground">Featured article</h2>
             <BlogCard
               post={featured}
               index={0}
@@ -137,13 +137,13 @@ const tagIcon = (tag: string): IconName => blogTagIcons[tag] ?? 'tag';
               showDate
               layout="featured"
               indexCard
-              readCtaLabel={`Read featured: ${featured.title}`}
+              readCtaLabel={`Featured read — ${featured.slug}`}
             />
           </div>
         )
       }
 
-      <h2 id="blog-grid-heading" class="mt-10 text-xl font-semibold text-foreground">All guides by topic</h2>
+      <h2 id="blog-grid-heading" class="mt-10 text-xl font-semibold text-foreground">All articles by topic</h2>
       <div
         id="blog-grid"
         class="mt-6 grid min-w-0 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-10 [&>*]:min-w-0"
@@ -155,7 +155,7 @@ const tagIcon = (tag: string): IconName => blogTagIcons[tag] ?? 'tag';
             index={index}
             showDate
             indexCard
-            readCtaLabel={`Open ${post.slug} guide`}
+            readCtaLabel={`Read article — ${post.slug}`}
           />
         ))}
       </div>

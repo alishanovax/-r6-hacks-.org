@@ -63,10 +63,10 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
       'Compare Rainbow Six Siege utilities on PC: HWID spoofer, UGC appeals, and local operator loadout tools at r6hacks.org.',
   },
   '/blog/': {
-    title: 'R6 Blog — Siege guides on aimbot, ESP and BattlEye',
+    title: 'R6 blogs — Siege guides on aimbot, ESP and BattlEye',
     description:
-      'R6 hack guides for Rainbow Six Siege on PC: aimbot setup, wall ESP, Lite vs Pro tiers, practice lobbies, and BattlEye patch-day checklists by topic.',
-    h1: 'Rainbow Six Siege guides — aimbot, wall ESP and BattlEye',
+      'Browse R6 blogs for Rainbow Six Siege on PC: aimbot setup, ESP and wall ESP tiers, Lite vs Pro, practice lobbies, and BattlEye patch-day checklists.',
+    h1: 'R6 Siege guides — aimbot, ESP, wall ESP and BattlEye',
   },
   '/forum/': {
     title: 'Forum — Rainbow Six Siege loader and tier help',
